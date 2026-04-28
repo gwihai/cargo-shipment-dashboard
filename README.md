@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# cargo-shipment-dashboard
-A fun little project using AIS data API to track cargo shipments and map it onto MapLibre to help understanding more about movement patterns of cargo in response to world events.
-=======
+
 # Global Cargo Tracker
 
 A real-time global cargo shipment tracker built with MapLibre GL and live AIS vessel data. Track ships across major world trade routes with animated positions, status filtering, and per-vessel detail popups — all in a clean, zero-dependency web app.
