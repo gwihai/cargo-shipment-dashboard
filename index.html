@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargo Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="header-left">
+          <span class="live-dot"></span>
+          <h1>Global cargo tracker</h1>
+        </div>
+        <span class="clock" id="clock"></span>
+      </header>
+
+      <div class="metrics" id="metrics"></div>
+
+      <div class="controls">
+        <div class="filters" id="filters"></div>
+        <input type="text" id="search" placeholder="Search vessel name..." />
+      </div>
+
+      <div id="map"></div>
+
+      <div class="legend">
+        <span class="legend-item"><span class="dot" style="background:#378ADD"></span>In transit</span>
+        <span class="legend-item"><span class="dot" style="background:#1D9E75"></span>Arrived</span>
+        <span class="legend-item"><span class="dot" style="background:#BA7517"></span>Delayed</span>
+        <span class="legend-item"><span class="dot" style="background:#7F77DD"></span>Loading</span>
+      </div>
+
+      <div class="ship-list" id="ship-list"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

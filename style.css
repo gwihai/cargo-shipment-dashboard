@@ -1,0 +1,255 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #378ADD;
+  --green: #1D9E75;
+  --amber: #BA7517;
+  --purple: #7F77DD;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --border: rgba(0,0,0,0.12);
+  --surface: #f5f5f3;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #fff;
+  color: var(--text);
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.clock {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Metrics */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.metric-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+}
+
+.metric-card .val {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.metric-card .lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(0,0,0,0.2);
+  background: #fff;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-btn.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+#search {
+  font-size: 13px;
+  padding: 5px 12px;
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  outline: none;
+  width: 200px;
+}
+
+#search:focus {
+  border-color: var(--blue);
+}
+
+/* Map */
+#map {
+  width: 100%;
+  height: 460px;
+  border-radius: var(--radius-lg);
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Ship list */
+.ship-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ship-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.ship-row:hover { border-color: rgba(0,0,0,0.3); }
+.ship-row.selected { border-color: var(--blue); }
+
+.ship-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.ship-info { flex: 1; min-width: 0; }
+
+.ship-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ship-route {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.ship-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.progress-wrap {
+  width: 72px;
+  height: 4px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.eta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* MapLibre popup override */
+.maplibregl-popup-content {
+  border-radius: var(--radius) !important;
+  padding: 12px !important;
+  font-family: system-ui, sans-serif !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+}
